@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void initgraph1()
+{
+  int gd=DETECT,gm;
+  initgraph(&gd,&gm,"C:\\TC\\BGI");
+}
+void main()
+ {
+	int xmin,ymin,xmax,ymax;
+	int x[20],y[20],n,i;
+	clrscr();
+	printf("\n profram for point cliping");
+	printf("\n enter xmin,xmax");
+	scanf("%d%d",&xmin,xmax);
+	printf("Enter ymin,ymax");
+	scanf("%d%d",&ymin,&ymax);
+	printf("enter no.of point to be clipped:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+	  printf("enter xfor point %d",i++);
+	  scanf("%d",&x[i]);
+	  printf("enter y for point %d",i++);
+	  scanf("%d",&y[i]);
+	 }
+	 initgraph1();
+	 outtextxy(60,60,"Before cliping");
+	 rectangle(xmin,xmax,ymin,ymax);
+	 for(i=0;i<n;i++);
+	 {
+	   putpixel(x[i],y[i],14);
+	 }
+	 outtextxy(70,90," press key to continue");
+	 getch();
+	 cleardevice();
+	 outtextxy(75,75,"after cliping");
+	 rectangle(xmin,xmax,ymin,ymax);
+	 for(i=0;i<n;i++)
+	 {
+	   if((x[i]>=xmin && x[i]<=xmax) && (y[i]>=ymin  && y[i]<=ymax))
+	   {
+		 putpixel(x[i],y[i],14);
+		}
+	 }
+		getch();
+		closegraph();
+   }

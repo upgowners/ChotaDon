@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void main()
+{
+	int gd=DETECT,gm;
+	int x1,y1,x2,y2,sx,sy;
+	initgraph(&gd,&gm,"C:\\TC\\BGI");
+	printf("enter x1,y1:\n");
+	scanf("%d %d",&x1,&y1) ;
+	printf("enter x2,y2:\n");
+	scanf("%d %d",&x2,&y2);
+	line(x1,y1,x2,y2);
+	printf("\n\n\n\n\n\n\nenter scaling parameter");
+	scanf("%d %d",&sx,&sy);
+	printf("\nline after translation:");
+	x1=x1+sx;
+	y1=y1+sy;
+	x2=x2+sx;
+	y2=y2+sy;
+	line(x1,y1,x2,y2);
+	getch();
+	closegraph();
+	}

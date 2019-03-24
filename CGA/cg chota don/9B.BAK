@@ -1,0 +1,63 @@
+#include<stdio.h>
+
+#include<conio.h>
+
+#include<graphics.h>
+
+void flood(int,int,int,int);
+
+void main()
+
+{
+
+int gd=DETECT, gm;
+
+clrscr();
+
+detectgraph(&gd,&gm);
+
+initgraph(&gd,&gm,"C:\\Turboc3\\bgi");
+
+printf("Rectangle filled by flood fill : 8 - connector ");
+
+rectangle(50,100,150,200);
+
+flood(54,104,8,0);
+
+getch();
+
+}
+
+void flood (int x, int y, int fill_col, int old_col)
+
+{
+
+if((getpixel(x,y)==old_col))
+
+{
+
+delay(1);
+
+putpixel(x,y,fill_col);
+
+flood(x+1,y,fill_col,old_col);
+
+flood(x-1,y,fill_col,old_col);
+
+flood(x,y+1,fill_col,old_col);
+
+
+
+flood(x,y-1,fill_col,old_col);
+
+flood(x+1,y-1,fill_col,old_col);
+
+flood(x+1,y+1,fill_col,old_col);
+
+flood(x-1,y-1,fill_col,old_col);
+
+flood(x-1,y+1,fill_col,old_col);
+
+}
+
+}

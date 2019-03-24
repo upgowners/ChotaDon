@@ -1,0 +1,15 @@
+#include<graphics.h>
+#include<conio.h>
+#include<stdio.h>
+void main()
+{
+	int gd=DETECT,gm;
+	int x,y,z;
+	initgraph(&gm,&gd,"C:\\TC\\BGI");
+	setcolor(WHITE);
+	settextstyle(TRIPLEX_FONT,HORIZ_DIR,2);
+	rectangle(150,180,250,300);
+	rectangle(250,189,420,300);
+	getch();
+	closegraph();
+}
