@@ -1,0 +1,16 @@
+Step 1 : Open Notepad Save the file as follows "example.c" in 
+Step 2 : Open Keil S/W uV 3 > Go to Project Menu > Click on Create New Project
+	 Type Proj Name Click on Save button 
+	then vendor Atmel Select In Database as Atmel and Device AT89C51 click on OK then Yes Button 
+Step 3 :Under Target  Source Group 1 (Right Click) > ADD Files to Group Source 1 >  Navigate to Your File > Click on Add
+	Your File will appear Below Source Grp 1 [You can Also Add Code or Edit Your Code]
+Step 4 : How to Run
+	Press F5
+	Cick on Icon with Rebuild all Target File NOTE : VEIW > FILE TOOLBAR should be on
+	Once Compiling is Sucessfull ..Congo !! :)
+Step 5 : How to Debug 
+	Click on Debug  1st OPtn Or CTRL+F5
+Step 6 : To SEE OUTPUT
+	Click on Peripherals > I/O Ports  then Select the Port NO. On Which O/p is passsed 
+Step 7 : To Debug Line by Line O/p
+		Debug >step (F11)

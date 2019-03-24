@@ -1,0 +1,88 @@
+getmode <-function(v)
+{
+uniqv <-unique(v)
+uniqv[which.max(tabulate(match(v,uniqv)))]
+}
+
+v <- c(2,3,3,4,4,1,2,3)
+r <-getmode(v)
+print(r)
+
+
+charv <- c("R","C","C++","R","C++")
+r <-getmode(charv)
+print(r)
+
+
+
+v <- c(23,34,45,56)
+u <- c(12,45,65)
+r <- lm(v~u)
+print(summary(r))
+lm(formula=v~u)
+
+ip <- mtcars[,c("mpg","disp","hp")]
+print(head(ip))
+
+a <- coef(m)[1]
+print(a)
+
+xdisp <- coef(m)[2]
+xhp <- coef(m)[3]
+print(xdisp)
+disp
+
+print(xhp)
+hp
+
+ip <- mtcars[,c("am",""wt","mpg")]
+print(head(ip))
+
+a <- seq(-5,5,by=0.2)
+png(file="pnorm.png")
+b <- pnorm(a,mean=1.5,sd=0.5)
+plot(a,b)
+dev.off()
+
+
+a <- seq(0,1,by=0.01)
+b <-qnorm(a, mean=2, sd=1)
+plot(a,b)
+
+
+a <- rnorm(50)
+png(file="Rnorm.png")
+hist(a, main="Normal Distribution")
+dev.off()
+hist(a, main="Normal Distribution")
+
+
+a <- seq(1,30, by=2)
+b <- dbinom(a,30,0.5)
+png(file="DBinom.png")
+plot(a,b)
+dev.off()
+plot(a,b)
+
+
+
+
+a <- pbinom(12,34,0,4)
+print(a)
+
+
+ip <-warpbreaks
+print(tail(ip))
+
+
+input <- mtcars[,c("am","mpg","hp")]
+print(tail(input))
+
+
+
+
+
+
+
+
+
