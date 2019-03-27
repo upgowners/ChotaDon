@@ -1,0 +1,472 @@
+//prac 2AConfigure timer control registers of 8051 and develop a program to generate 
+
+given time delay
+
+#include<reg51.h> // Define Variables & SFR
+//#include<standard.h>
+void Delayms(void); // Time 0,Mode 1(16 bit Timer)
+sbit OUTPUT =P1^0; // Initialize port pin P1.0 as O/P
+void main()
+{
+	while(1)
+	{
+		OUTPUT=0; //Make P1.0 low
+		Delayms(); //Delay of 50 usec
+		OUTPUT=1; //MAke P1.0 high
+		Delayms(); //Delay of 50 usec
+	}
+}
+void Delayms()
+{
+	TMOD=0x01; //Timer 0 Model (16 bit Timer)
+	TL0=0x3C;  //Load TL0=3C H
+	TH0=0xB0;  //Load TH0=B0 H
+	TR0=1;    // Run Timer 0
+	
+	while(TF0==0)  // wait 4 TF0 to overflow
+		TR0=0;   //Stop Timer
+		TF0=0;   // clear TF0
+		
+}
+
+
+//practical-2b
+To demonstrate use of general purpose port i.e. Input/ output port of two 
+
+controllers for data transfer between them
+#include<reg51.h>
+void delayms(int time);
+void main()
+{
+	while(1)
+	{
+		P1=0xFF;
+		delay(100);
+		P2=P1;
+	}	
+}
+void delayms(int time)
+{
+	int i,j;
+	for(i=0;i<time;i++)
+		for(j=0;j<=23;j++);
+} 
+
+//3A
+Port I / O: Use one of the four ports of 8051 for O/P interfaced to eight LED¡¯s. 
+
+Simulate binary counter (8 bit) on LED¡¯s
+#include<reg51.h>
+void delay(int time); // delay() prototype,this functn generates delay=(time x 1 msec)
+/* Eg: delay(500). 
+	Generates delay of (500 x 1 msec)=500 msec */
+void main()
+{
+	P1=00000000; // Initialize port 1 as output
+	while(1)    //  Infinite Loop
+	{
+		P1++; //Increment port 1(Binary Counter)
+		delay(1000);// call delay().Add Some delay for output 
+//LED to generate 1 sec delay pass value 1000
+// i.e 1000 x 1 msec =1 sec 
+	}
+} // End of Main
+void delay(int time) // Generates a Delay of Desired Amount
+{
+	int i,j;    // Initialize variable i,j for Generating Delay
+	for(i=0;i<=time;i++)
+	{
+		for(j=0;j<=1275;j++); // This for loop generates Delay of 1millisecond
+		
+	}	
+}
+
+
+//3B
+To interface 8 LEDs at Input-output port and create different patterns
+#include<reg51.h>
+void delay(int time);
+void main()
+{
+	P1=0x01;
+	delay(1000);
+	P1=0x01;
+	delay(1000);
+	P1=0x02;
+	delay(1000);
+	P1=0x04;
+	delay(1000);
+	P1=0x08;
+	delay(1000);
+	P1=0x10;
+	delay(1000);
+	P1=0x20;
+	delay(1000);
+	P1=0x40;
+	delay(1000);
+	P1=0x80;
+	delay(1000);
+		
+}
+void delay(int time) // Generates a Delay of Desired Amount
+{
+	int i,j;    // Initialize variable i,j for Generating Delay
+	for(i=0;i<=time;i++)
+	{
+		for(j=0;j<=1275;j++); // This for loop generates Delay of 1millisecond
+		
+	}	
+}
+
+//4A
+Serial I / O: Configure 8051 serial port for asynchronous serial communication 
+
+with serial port of PC exchange text messages to PC and display on PC screen. 
+
+Signify end of message by carriage return.
+/* The program send characters "YES" to PC with baud rate of 9600 using serial Communication */
+#include<reg51.h>
+void send(char x);
+
+void main(void)
+{
+	TMOD=0x20;
+
+	TH1=0xFD;
+
+	SCON=0x50;
+
+	TR1=1;
+	send('Y');
+	send('E');
+	send('S');
+	send('\r');
+	while(1);
+}
+void send(char x)
+{
+	SBUF=x;
+	while(TI==0);
+	TI=0;
+}
+
+//4B
+To demonstrate interfacing of seven-segment LED display and generate 
+
+counting from 0 to 99 with fixed time delay
+#include<reg51.h>
+#include<intrins.h>
+void delay(int time);
+void main()
+/* Start of main() function*/
+{
+	unsigned char DIGIT[10]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+/* Create a look-up table (array) named DIGIT to send appropriate values to DAC so that a sine-wave is generated.Refer to table */
+int i;/*variable i used in for loop*/
+while(1)/*Infinite loop.The program will run forever*/
+{
+	for(i=0;i<10;i++)
+	{
+		P1=DIGIT[i];
+		delay(100);/*All the values in the array is sent to P1 one by one*/
+	}
+}
+}
+void delay(int time)/*Start of delay() function. Delay() function generates delay of desired amount.*/
+{
+	int i,j;/*Initialize variable i,j for generating Delay*/
+	for(i=0;i<=time;i++)/*Use Nested for loops to generate desired amount of delay.1ms delay by value stored in variable 'time'*/
+	for(j=0;j<=1275;j++);/*this for loop generates delay of 1ms*/
+}
+
+
+//4C
+Interface 8051 with D/A converter and generate square wave of given frequency 
+
+on oscilloscope.
+#include<reg51.h>
+void delay(int time); //delay() function prototype,this function generates delay=(time*1msec)
+void main()
+{
+	P1=0x00;
+	while(1)
+	{
+		P1=0xFF;
+		delay(1);
+		P1=0x00;
+		delay(1);
+	}
+}
+void delay(int time)
+{
+	int i,j;
+	for(i=0;i<=time;i++)
+		for(j=0;j<=time;j++);
+}
+
+//5A
+
+Interface 8051 with D/A converter and generate triangular wave of given 
+
+frequency on oscilloscope
+#include<reg51.h>
+void main()
+{
+	P1=0x00;
+	while(1)
+	{
+		do
+		{
+			P1+=0x05;
+		}
+		while(P1<0xFF);
+		do
+		{
+			P1-=0x05;
+		}
+		while(P1>0x00);
+	}
+}
+
+//5B
+Using D/A converter generate sine wave on oscilloscope with the help of 
+
+lookup table stored in data area of 8051.
+#include<reg51.h>
+#include<intrins.h>
+void main()
+{
+	int WAVEVALUE[12]={128,192,238,255,238,192,128,64,17,0,17,64};
+	int i;
+	while(1)
+	{
+			for(i=0;i<12;i++)
+			{
+				P1=WAVEVALUE[i];
+				_nop_();
+				_nop_();
+				_nop_();
+				_nop_();
+				_nop_();
+				_nop_();
+			}
+	}
+
+
+}
+
+//6A
+
+Interface stepper motor with 8051 and write a program to move the motor 
+
+through a given angle in clock wise or counter clock wise direction
+#include<reg51.h>
+sbit flag=P2^0;
+void delay();
+void main()
+{
+	if(flag==0)
+	{
+		P1=0x03;
+		delay();
+		P1=0x06;
+		delay();
+		P1=0x0C;
+		delay();
+		P1=0x18;
+		delay();
+	}
+	else
+	{
+		P1=0x18;
+		delay();
+		P1=0x0C;
+		delay();
+		P1=0x06;
+		delay();
+		P1=0x03;
+		delay();
+	}
+}
+void delay()
+{
+	int i,j;
+	for(i=0;i<=1000;i++)
+		for(j=0;j<=1275;j++);
+}
+
+//7A
+Temperature control
+#include<reg51.h>
+void delay(void);
+void send(char x);
+unsigned char nalaram[]={"under control \n"};
+unsigned char alaram[]={"need to control \n"};
+unsigned int i;
+void main(void)
+{
+	TMOD=0x20;
+	TH1=0xFD;
+	SCON=0x50;
+	TR1=1;
+	while(1)
+	{
+		if(P1>0x05)
+		{
+			for(i=0;i<17;i++)
+			{
+				send(alaram[i]);
+			}
+			P2=0xFF;
+			delay();
+			P2=0x00;
+			delay();
+		}
+		else
+		{
+			for(i=0;i<14;i++)
+			{
+				send(nalaram[i]);
+			}
+			P3=0x55;
+		}
+	}
+}
+void delay(void)
+{
+	unsigned int i;
+	for(i=0;i<=40000;i++);
+}
+void send(char x)
+{
+	SBUF=x;
+	while(TI==0);
+	TI=0;
+}
+
+//8A
+Elevator
+#include<reg51.h>
+unsigned int i;
+void delay();
+void send(char x);
+void main(void)
+{
+	unsigned int z;
+	TMOD=0x20;
+	TH1=0xF4;
+	SCON=0x50;
+	TR1=1;
+	while(1)
+	{
+		z=P1;
+		switch(z)
+		{
+			case(1):
+			{
+				send('1');
+				P2=0x66;
+				delay();
+				break;
+			}
+			case(2):
+			{
+				send('2');
+				P2=0xCC;
+				delay();
+				break;
+			}
+			case(3):
+			{
+				send('3');
+				P2=0x99;
+				delay();
+				break;
+			}
+			case(4):
+			{
+				send('4');
+				P2=0x33;
+				delay();
+				break;
+			}
+		}
+	}
+}
+void delay()
+{
+	unsigned int i;
+	for(i=0;i<=40000;i++);
+}
+void send(char x)
+{
+	SBUF=x;
+	while(TI==0);
+	TI=0;
+}
+
+//9A
+Signal
+#include<reg51.h>
+
+void Delayms(unsigned int count);
+sbit RED=P1^0;
+sbit YELLOW= P1^1;
+sbit GREEN= P1^2;
+void main()
+{
+	while(1)
+	{
+		RED=1;
+		Delayms(1000);
+		GREEN=1;
+		Delayms(1000);
+		YELLOW=1;
+		Delayms(1000);
+	}
+}
+void Delayms(unsigned int count)
+{
+	int i,j;
+	for(i=0;i<count;i++)
+		for(j=0;j<1275;j++);
+}
+
+
+//9B
+Signal 2
+//practical-9b
+#include<reg51.h>
+//#include<standard.h>
+#define Signal1 P1
+#define Signal2 P2
+void delayms(int count);
+void main()
+{
+	while(1)
+	{
+		Signal1= 0x61;
+		Signal2= 0x08;
+		delayms(1000);
+		Signal1 = 0xA2;
+		Signal2 = 0x08;
+		delayms(1000);
+		Signal1 = 0x0C;
+		Signal2 = 0x0C;
+		delayms(1000);
+		Signal1 = 0x14;
+		Signal2 = 0x05;
+		delayms(1000);
+	}
+}
+void delayms( int count)
+{
+	int i,j;
+	for(i=0;i<count;i++)
+		for(j=0;j<1275;j++);
+}
+
+
+
+
+
