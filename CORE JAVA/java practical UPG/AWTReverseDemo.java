@@ -8,21 +8,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
-class Factorial extends Frame implements WindowListener,ActionListener
+class Reverse extends Frame implements WindowListener,ActionListener
 {
 	Label lbl,lb2;
 	TextField txt;
 	Button btn;
-	Factorial()
+	Reverse()
 	{
 		lbl = new Label("Number :");
 		lb2 = new Label();
 	
 		txt = new TextField(10);
-		btn = new Button("factorial");
+		btn = new Button("Reverse");
 		setLayout(new FlowLayout());
 		
-		setTitle("Factorial");
+		setTitle("Reverse");
 		add(lbl);
 		
 		add(txt);
@@ -50,18 +50,20 @@ class Factorial extends Frame implements WindowListener,ActionListener
 	public void actionPerformed(ActionEvent ae)
 	{
 		int num = Integer.parseInt(txt.getText());
-		int fact = 1;
-		while(num > 0){
-			fact = fact * num;
-			num--;
+		int remainder =0,rev = 0;
+		while(num > 0)
+		{
+			remainder = num % 10;
+			rev = rev * 10 + remainder;
+			num = num / 10;
 		}
-		lb2.setText("" + fact);	
+		lb2.setText(rev + "");
 	}
 }
-class AWTFactorialDemo
+class AWTReverseDemo
 {
 	public static void main(String[] args)
 	{
-		Factorial mf = new Factorial();
+		Reverse mf = new Reverse();
 	}
 }

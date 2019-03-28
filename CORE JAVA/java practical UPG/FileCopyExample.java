@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
  
-public class CopyExample 
+public class FileCopyExample 
 {
     public static void main(String[] args)
     {	
@@ -23,7 +23,8 @@ public class CopyExample
     	    /*copying the contents from input stream to
     	     * output stream using read and write methods
     	     */
-    	    while ((length = instream.read(buffer)) > 0){
+			System.out.println((instream.read(buffer)));
+    	    while ((char)(length = instream.read(buffer)) > 0){
     	    	outstream.write(buffer, 0, length);
     	    }
 

@@ -8,21 +8,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 import java.awt.event.WindowEvent;
 
-class Factorial extends Frame implements WindowListener,ActionListener
+class Prime extends Frame implements WindowListener,ActionListener
 {
 	Label lbl,lb2;
 	TextField txt;
 	Button btn;
-	Factorial()
+	Prime()
 	{
 		lbl = new Label("Number :");
 		lb2 = new Label();
 	
 		txt = new TextField(10);
-		btn = new Button("factorial");
+		btn = new Button("Prime");
 		setLayout(new FlowLayout());
 		
-		setTitle("Factorial");
+		setTitle("Prime");
 		add(lbl);
 		
 		add(txt);
@@ -50,18 +50,22 @@ class Factorial extends Frame implements WindowListener,ActionListener
 	public void actionPerformed(ActionEvent ae)
 	{
 		int num = Integer.parseInt(txt.getText());
-		int fact = 1;
-		while(num > 0){
-			fact = fact * num;
-			num--;
+		int flag = 1;
+		for(int i=2;i<=num/2;i++)
+		{
+			if(num%i == 0)
+				flag = 0;
 		}
-		lb2.setText("" + fact);	
+		if(flag != 0)
+			lb2.setText("Prime number");
+		else
+			lb2.setText("Not a Prime number");
 	}
 }
-class AWTFactorialDemo
+class AWTPrimeDemo
 {
 	public static void main(String[] args)
 	{
-		Factorial mf = new Factorial();
+		Prime mf = new Prime();
 	}
 }

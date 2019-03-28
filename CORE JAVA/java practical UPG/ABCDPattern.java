@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Pattern
+class Pattern
 {
     public static void main(String[] args)
     {
