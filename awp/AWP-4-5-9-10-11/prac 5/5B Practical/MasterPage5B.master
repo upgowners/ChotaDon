@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage5B.master.cs" Inherits="MasterPage5B" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+       body
+       {
+           width:80%;
+           
+           }
+    .Header
+{         position: absolute;
+        top: 10px;
+        left: 10px;
+        height: 60px;
+            text-align: center;
+            background-color:Aqua;
+            width:100%;
+            text-align:center;
+}
+.LeftPanel
+{
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            /*width: 160px;*/
+            background-color: #C0C0C0;
+              width:10%;
+              height:200px;
+        }
+.RightPanel
+{
+            position: absolute;
+            top: 100px;
+            right: 10px;
+            /*width: 160px;*/
+              width:10%;
+            background-color: #9999FF;
+            height:200px;
+        }
+.CenterPanel
+{
+            position: absolute;
+            top: 100px;
+            margin-left: 175px;
+            margin-right: 180px;
+            background-color: #99FFCC;
+            width:70%;
+            height:200px;
+        }
+
+    
+    </style>
+</head>
+<body >
+  
+<form id = "form1" runat = "server">
+<div class = "Header">
+<h1> My Header</h1>
+</div>
+<div class = "LeftPanel">
+<asp:TreeView ID = "TreeView1" runat = "server" Width = "150px">
+<Nodes>
+<asp:TreeNode Text = "Root" Value = "New Node">
+<asp:TreeNode Text = "Page 1" Value = "Page 1"> </asp:TreeNode>
+<asp:TreeNode Text = "Page 2" Value = "Page 2"> </asp:TreeNode>
+</asp:TreeNode>
+</Nodes>
+</asp:TreeView>
+</div>
+<div class = "CenterPanel">
+<asp:ContentPlaceHolder id = "MainContent" runat = "server">
+
+</asp:ContentPlaceHolder>
+</div>
+<div class = "RightPanel">
+<asp:ContentPlaceHolder id = "AdditionalContent" runat = "server"> </asp:ContentPlaceHolder>
+</div>
+</form>
+</body>
+</html>
