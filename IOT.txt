@@ -1,0 +1,154 @@
+1. Different Led Patterns.py
+
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+
+# init list with pin numbers
+
+pinList = [5, 6, 13, 19, 26]
+
+# loop through pins and set mode and state to 'high'
+
+for i in pinList: 
+    GPIO.setup(i, GPIO.OUT) 
+    GPIO.output(i, GPIO.HIGH)
+
+# time to sleep between operations in the main loop
+
+SleepTimeL = 2
+
+# main loop
+
+try:
+  GPIO.output(26, GPIO.LOW)
+  print "one"
+  time.sleep(SleepTimeL); 
+  GPIO.output(19, GPIO.LOW)
+  print "second"
+  time.sleep(SleepTimeL);  
+  GPIO.output(13, GPIO.LOW)
+  print "THREE"
+  time.sleep(SleepTimeL);
+  GPIO.output(6, GPIO.LOW)
+  print "FOUR"
+  time.sleep(SleepTimeL);
+  GPIO.output(5, GPIO.LOW)
+  print "FIVE"
+  time.sleep(SleepTimeL);
+  GPIO.cleanup()
+  print "Good bye!"
+
+# End program cleanly with keyboard
+except KeyboardInterrupt:
+  print "  Quit"
+
+  # Reset GPIO settings
+  GPIO.cleanup()
+
+
+
+
+2.clock or seven segment led
+
+from time import sleep
+import tm1637
+
+try:
+    import thread
+except ImportError:
+    import _thread as thread
+
+# Initialize the clock (GND, VCC=3.3V, Example Pins are DIO-20 and CLK21)
+
+Display = tm1637.TM1637(CLK=21, DIO=20, brightness=1.0)
+
+try:
+    print "Starting clock in the background (press CTRL + C to stop):"
+    Display.StartClock(military_time=False)
+    print 'Continue Python script and tweak Display!'
+    sleep(5)
+    Display.ShowDoublepoint(False)
+    sleep(5)
+    loops = 3
+    while loops > 0:
+        for i in range(0, 10):
+            Display.SetBrightness(i / 10.0)
+            sleep(0.5)
+        loops -= 1
+    Display.StopClock()
+    thread.interrupt_main()
+except KeyboardInterrupt:
+    print "Properly closing the clock and open GPIO pins"
+    Display.cleanup()
+	
+	
+	
+	
+3.Camera
+
+import picamera
+from time import sleep
+
+#create object for PiCamera class
+camera = picamera.PiCamera()
+#set resolution
+camera.resolution = (1024, 768)
+camera.brightness = 60
+camera.start_preview()
+#add text on image
+camera.annotate_text = 'Hi Pi User'
+sleep(5)
+#store image
+camera.capture('image1.jpeg')
+camera.stop_preview()
+
+
+
+
+3.Vedio
+
+import picamera
+from time import sleep
+
+camera = picamera.PiCamera()
+camera.resolution = (640, 480)
+
+print()
+#start recording using pi camera
+camera.start_recording("demo.h264")
+#wait for video to record
+camera.wait_recording(20)
+#stop recording
+camera.stop_recording()
+camera.close()
+print("video recording stopped")
+
+
+
+4.RFID
+
+import time 
+import serial 
+def read_rfid():
+	#open named port
+    ser=serial.Serial("/dev/ttyUSB0") 
+	#set baudrate to 9600    
+	ser.baudrate=9600 
+	# read 12 character from serial port to data
+    data=ser.read(12) 
+	#close data
+	ser.close()    
+	# return data
+	return data 
+try:  
+   while True:
+       id=read_rfid() #function call
+       print(id) # print RFiD
+       if id=="1E005CB800FA":
+           print("Acess Granted")
+       else:
+            print("Access Denied")
+finally:
+    print("bye") 
