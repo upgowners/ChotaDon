@@ -1,0 +1,1248 @@
+1. create a simple application to perform following operations:
+a. factorial:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Factorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, fact = 1, number;
+            Console.Write("Enter Number for Factorial:");
+            number = int.Parse(Console.ReadLine());
+            for (i = number; i >= 1; i--)
+            {
+                fact = fact * i;
+            }
+            Console.Write("Factorial of " + number + " is:" + fact);
+            Console.ReadKey();
+        }
+    }
+}
+
+b.Money Conversion:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace MoneyConversion
+{
+class Program
+{
+static void Main(string[] args)
+{
+int choice;
+Console.Write("Enter your choice:\n 1- US DOLLAR\n 2- EURO \n 3- YAN \n 4- POUNDS\n Enter:");
+choice = int.Parse(Console.ReadLine());
+switch (choice)
+{
+case 1:
+Double dollar, rupee, dollarvale=71.05;
+Console.Write("Enter Dollar Amount:");
+dollar = Double.Parse(Console.ReadLine());
+rupee = dollar * dollarvale;
+Console.WriteLine("Dollar to Rupee Conversion:" + rupee);
+break;
+
+case 2:
+Double euro, rupee1, eurovale=78.40;
+Console.Write("Enter Euro Amount:");
+euro = Double.Parse(Console.ReadLine());
+Console.WriteLine("Enter Euro Value:");
+rupee1 = euro * eurovale;
+Console.WriteLine("Euro to Rupee Conversion:" + rupee1);
+break;
+
+case 3:
+Double yen, rupee2, yenvalue=0.66;
+Console.Write("Enter Yen Amount:");
+yen = Double.Parse(Console.ReadLine());
+rupee2 = yen * yenvalue;
+Console.WriteLine("Yan to Rupee Conversion:" + rupee2);
+break;
+
+case 4:
+Double pound, rupee3, poundvale=89.88;
+Console.Write("Enter Pounds Amount:");
+pound = Double.Parse(Console.ReadLine());
+rupee3 = pound * poundvale;
+Console.WriteLine("Dollar to Rupee Conversion:" + rupee3);
+break;
+
+default:
+Console.Write("Wrong Choice");
+break;
+}
+Console.ReadKey();
+}
+}
+}
+
+c. cube of number
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Cube
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num, cube=0;
+            Console.WriteLine("Enter Number to find cube:");
+            num = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= num; i++)
+            {
+                cube = i * i * i;
+            }
+            Console.WriteLine("The cube of "+num+ " is " +cube);
+            Console.ReadLine();
+        }
+    }
+}
+
+d. fibonacci:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace FibonacciSeries
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num;
+            Console.WriteLine("Enter number to generate Fibonacci series:");
+            num = int.Parse(Console.ReadLine());
+            int a = 0;
+            int b = 1;
+            int c = 0;
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            for (int i = 2; i < num; i++)
+            {
+                c = a + b;
+                Console.Write(c + "\n");
+                a = b;
+                b = c;
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+2. Demonstrate use of Calender control to perform following operations
+
+Default.aspx:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Calendar ID="Calendar1" runat="server" BackColor="#FFFFCC" 
+            BorderColor="#FFCC66" BorderWidth="1px" DayNameFormat="Shortest" 
+            Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" 
+            ondayrender="Calendar1_DayRender" 
+            onselectionchanged="Calendar1_SelectionChanged" ShowGridLines="True" 
+            Width="220px">
+            <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
+            <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
+            <OtherMonthDayStyle ForeColor="#CC9966" />
+            <SelectedDayStyle BackColor="#CCCCFF" Font-Bold="True" />
+            <SelectorStyle BackColor="#FFCC66" />
+            <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" 
+                ForeColor="#FFFFCC" />
+            <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
+        </asp:Calendar>
+        <asp:Calendar ID="Calendar2" runat="server" BackColor="White" 
+            BorderColor="Black" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" 
+            Font-Size="9pt" ForeColor="Black" Height="191px" NextPrevFormat="ShortMonth" 
+            Width="230px">
+            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" 
+                Height="8pt" />
+            <DayStyle BackColor="#CCCCCC" />
+            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="White" />
+            <OtherMonthDayStyle ForeColor="#999999" />
+            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+            <TitleStyle BackColor="#333399" BorderStyle="Solid" Font-Bold="True" 
+                Font-Size="12pt" ForeColor="White" Height="12pt" />
+            <TodayDayStyle BackColor="#999999" ForeColor="White" />
+        </asp:Calendar>
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    </div>
+    </form>
+</body>
+</html>
+ 
+Default.aspx.cs:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+    {
+        if (e.Day.Date.Year == 2019 && e.Day.Date.Month == 10 && e.Day.Date.Day == 2)
+        {
+            Label l1= new Label();
+            l1.Text= "<br>Gandhi Jayanti";
+            e.Cell.Controls.Add(l1);
+        }
+        if (e.Day.Date.Year == 2019 && e.Day.Date.Month == 10 && e.Day.Date.Day == 17)
+        {
+            Label l2 = new Label();
+            l2.Text = "<br>Project Presentation";
+            e.Cell.Controls.Add(l2);
+        }
+
+    }
+    protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+    {
+        Calendar1.SelectedDayStyle.BackColor = System.Drawing.Color.Yellow;
+        Calendar1.SelectedDayStyle.ForeColor = System.Drawing.Color.Red;
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        TimeSpan ts = Calendar1.SelectedDate - Calendar2.SelectedDate;
+        Label1.Text= ts.TotalDays.ToString();
+    }
+}
+
+
+1. Create an XML document for student databsae and apply style sheet effects and display on webpage
+
+students.xml:
+
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="style.xsl" ?>
+<students>
+  <student>
+    <rollno>1</rollno>
+    <name>Abhishek</name>
+  </student>
+  <student>
+    <rollno>2</rollno>
+    <name>Siddhesh</name>
+  </student>
+  <student>
+    <rollno>3</rollno>
+    <name>Akshita</name>
+  </student>
+</students>
+
+style.xsl:
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+    <html>
+      <head>
+      </head>
+      <body>
+        <table border="2">
+        <xsl:for-each select="students/student">
+          <tr>
+            <td>
+            <xsl:value-of select="name"/>
+            </td>
+            <td>
+            <xsl:value-of select="rollno"/>
+            </td>
+          </tr>
+        </xsl:for-each>
+        </table>
+      </body>
+    </html>
+</xsl:template>
+</xsl:stylesheet>
+
+2.Create a webpage containing the student details( RollNo, Name, Class, Phone, Email). Write a program to store data in database and retrieve it using Data reader in tabular format.
+not found
+
+1.Create a webpage containing various sever controls to demonstrate setting and use of their properties.(Autopost back)
+
+default.aspx:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:ListBox ID="ListBox1" runat="server">
+            <asp:ListItem>item1</asp:ListItem>
+            <asp:ListItem>item2</asp:ListItem>
+            <asp:ListItem>item3</asp:ListItem>
+            <asp:ListItem>item4</asp:ListItem>
+            <asp:ListItem>item5</asp:ListItem>
+        </asp:ListBox>
+        <br />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+        <asp:DropDownList ID="DropDownList1" runat="server" 
+            onselectedindexchanged="DropDownList1_SelectedIndexChanged" 
+            AutoPostBack="True">
+             <asp:ListItem>item1</asp:ListItem>
+            <asp:ListItem>item2</asp:ListItem>
+            <asp:ListItem>item3</asp:ListItem>
+            <asp:ListItem>item4</asp:ListItem>
+            <asp:ListItem>item5</asp:ListItem>
+        </asp:DropDownList>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <br />
+    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" 
+            onselectedindexchanged="DropDownList2_SelectedIndexChanged">
+            <asp:ListItem>10</asp:ListItem>
+            <asp:ListItem>15</asp:ListItem>
+            <asp:ListItem>20</asp:ListItem>
+            <asp:ListItem>30</asp:ListItem>   
+    </asp:DropDownList>
+    </div>
+    <asp:Image ID="Image1" runat="server" ImageUrl="~/download.jpg" />
+    <br />
+    <br />
+    <asp:Label ID="Label2" runat="server" Text="Hello!!"></asp:Label>
+    <br />
+    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" 
+        oncheckedchanged="CheckBox1_CheckedChanged" Text="Underline" />
+    <asp:CheckBox ID="CheckBox2" runat="server" AutoPostBack="True" 
+        oncheckedchanged="CheckBox2_CheckedChanged" Text="Bold" />
+    <asp:CheckBox ID="CheckBox3" runat="server" AutoPostBack="True" 
+        oncheckedchanged="CheckBox3_CheckedChanged" Text="Italic" />
+    <br />
+    <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" 
+        GroupName="color" oncheckedchanged="RadioButton1_CheckedChanged" Text="Red" />
+    <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" 
+        GroupName="color" oncheckedchanged="RadioButton2_CheckedChanged" Text="Blue" />
+    </form>
+</body>
+</html>
+ 
+default.aspx.cs:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        TextBox1.Text = ListBox1.SelectedValue.ToString();
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Label1.Text = DropDownList1.SelectedValue.ToString();
+    }
+    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Label1.Font.Size = Convert.ToInt32(DropDownList2.SelectedValue);
+    }
+    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CheckBox1.Checked == true)
+        {
+            Label2.Font.Underline = true;
+        }
+        else
+        {
+            Label2.Font.Underline = false;
+        }
+    }
+    protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CheckBox2.Checked == true)
+        {
+            Label2.Font.Bold = true;
+        }
+        else
+        {
+            Label2.Font.Bold = false;
+        }
+
+    }
+    protected void CheckBox3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (CheckBox3.Checked == true)
+        {
+            Label2.Font.Italic = true;
+        }
+        else
+        {
+            Label2.Font.Italic = false;
+        }
+
+    }
+    protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+    {
+        Label2.ForeColor = System.Drawing.Color.Red;
+    }
+    protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+    {
+        Label2.ForeColor = System.Drawing.Color.Blue;
+    }
+}
+
+2.Create a simple webpage the count the number of times the current webpage is submitted to the server on click event of a button.
+
+default.aspx:
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Submit" />
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Application["x"] = Convert.ToInt32(Application["x"]) + 1;
+        Label1.Text = Application["x"].ToString();
+    }
+}
+
+1.Create a web form to demonstrate use of User Control. Creater a footer named user control having copyright reserved and use it in a webpage.
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<%@ Register src="footer.ascx" tagname="footer" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <uc1:footer ID="footer1" runat="server" />
+    
+    </div>
+    </form>
+
+
+</body>
+</html>
+
+footer.ascx
+
+<%@ Control Language="C#" AutoEventWireup="true" CodeFile="footer.ascx.cs" Inherits="footer" %>
+<div style= "border: medium inset #FF0000 border-top-width: medium; border-top-style: inset; border-top-color: #FF0000; border-right-width: medium; border-right-style: inset; border-right-color: #FF0000; border-bottom-width: medium; border-bottom-style: inset; border-bottom-color: #FF0000; border-left-width: medium; border-left-style: inset; border-left-color: #FF0000;">
+@Delloite
+</div>
+
+footer.ascx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class footer : System.Web.UI.UserControl
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+}
+
+2.Create a web form to demonstarte Adrotater controls with five advertisements. also explain how keyword filter works.
+Xmlfile.xml
+
+<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageURL>~/Images/google.png</ImageURL>
+    <NavigateURL>https://www.google.com</NavigateURL>
+    <AlternateText></AlternateText>
+    <keyword>Google</keyword>
+  </Ad>
+  <Ad>
+    <ImageURL>~/Images/gmail.png</ImageURL>
+    <NavigateURL>https://www.gmail.com</NavigateURL>
+    <AlternateText></AlternateText>
+    <keyword>Google</keyword>
+  </Ad>
+
+  <Ad>
+    <ImageURL>~/Images/facebook.png </ImageURL>
+    <NavigateURL>https://www.facebook.com</NavigateURL>
+    <AlternateText></AlternateText>
+    <keyword>Social</keyword>
+  </Ad>
+
+  <Ad>
+    <ImageURL>~/Images/instagram.jpg</ImageURL>
+    <NavigateURL>https://www.instagram.com</NavigateURL>
+    <AlternateText> </AlternateText>
+    <keyword>Social</keyword>
+  </Ad>
+
+  <Ad>
+    <ImageURL>youtube.png</ImageURL>
+    <NavigateURL>https://www.youtube.com</NavigateURL>
+    <AlternateText></AlternateText>
+    <keyword>Social</keyword>
+  </Ad>
+</Advertisements>
+
+
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div style="height: 231px; width: 380px">
+    
+        <asp:AdRotator ID="AdRotator1" runat="server" KeywordFilter="Google" AdvertisementFile="~/XMLFile.xml" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    </form>
+</body>
+</html>
+
+1.Create an XML file employees with nodes given. Bind eid and ename to a dropdown list and ename should be in ascending order.
+
+XMLfile.xml
+
+<?xml version="1.0" encoding="utf-8" ?>
+<employees>
+  <employee>
+  <eid>1</eid>
+  <ename>Abhishek</ename>
+  <edept>IT</edept>
+  <salary>5000</salary>
+  </employee>
+  <employee>
+  <eid>2</eid>
+  <ename>Siddhesh</ename>
+  <edept>IT</edept>
+  <salary>4000</salary>
+  </employee>
+  <employee>
+  <eid>3</eid>
+  <ename>Akshita</ename>
+  <edept>IT</edept>
+  <salary>6000</salary>
+  </employee>
+    <employee>
+      <eid>4</eid>
+  <ename>Ashu</ename>
+  <edept>IT</edept>
+  <salary>9000</salary>
+    </employee>
+</employees>
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        DataSet empds = new DataSet();
+        empds.ReadXml(Server.MapPath("")+"\\XMLFile.xml");
+        empds.Tables[0].DefaultView.Sort = "ename";
+        DropDownList1.DataSource = empds.Tables[0];
+        DropDownList1.DataTextField = "ename";
+        DropDownList1.DataValueField = "eid";
+
+        DropDownList1.DataBind();
+    }
+}
+
+2.Create a web page that takes a number as input and display it 4 times in a row.
+eg.
+22 22 22 22
+22222222
+22 22 22 22
+22222222
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+    
+    </div>
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    <br />
+    <br />
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <br />
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Label1.Text="";
+        int a = Convert.ToInt32(TextBox1.Text);
+        for (int i = 1; i <= 10; i++)
+        {
+            if (i % 2 == 0)
+            {
+                for (int j = 1; j <= 4; j++)
+                {
+                    Label1.Text += a.ToString();
+                }
+                Label1.Text += "<br>";
+            }
+            else
+            {
+                for (int j = 1; j <= 4; j++)
+                {
+                    Label1.Text += a.ToString()+" ";
+                }
+                Label1.Text += "<br>";
+
+            }
+
+        }
+    }
+}
+
+1.Create a simple webpage to display date properties as well as to display number of days of the year between two specified years
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.apx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        DateTime date = DateTime.Now;
+        Response.Write(date+"<br>");
+        Response.Write(date.Second+"<br>");
+        Response.Write(date.Minute+"<br>");
+        Response.Write(date.Hour+"<br>");
+        Response.Write(date.Millisecond + "<br>");
+        Response.Write(date.Date.Day+"<br>");
+        Response.Write(date.Date.Month+"<br>");
+        Response.Write(date.Date.Year+"<br>");
+        DateTime dt1 = new DateTime(2019, 10, 13);
+        DateTime dt2 = new DateTime(2015, 10, 13);
+        TimeSpan ts = dt1 - dt2;
+        Response.Write(Math.Round(ts.TotalDays / 365));
+    }
+}
+
+2. Create webpage containing student details and show using databinding and dropdown list.
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
+    <br />
+    <asp:DropDownList ID="DropDownList1" runat="server">
+    </asp:DropDownList>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        DataSet studs = new DataSet();
+        studs.Tables.Add(new DataTable("student"));
+        studs.Tables["student"].Columns.Add(new DataColumn("rollno"));
+        studs.Tables["student"].Columns.Add(new DataColumn("name"));
+        studs.Tables["student"].Columns.Add(new DataColumn("class"));
+        studs.Tables["student"].Columns.Add(new DataColumn("phone"));
+        studs.Tables["student"].Columns.Add(new DataColumn("email"));
+
+        DataRow dr = studs.Tables["student"].NewRow();
+        dr["rollno"] = "1";
+        dr[1] = "Abhishek";
+        dr[2] = "IT";
+        dr[3] = "9967800";
+        dr[4] = "abhishek@gmail.com";
+        studs.Tables["student"].Rows.Add(dr);
+
+        dr = studs.Tables["student"].NewRow();
+        dr["rollno"] = "2";
+        dr[1] = "Siddhesh";
+        dr[2] = "IT";
+        dr[3] = "828282";
+        dr[4] = "sid@gmail.com";
+        studs.Tables["student"].Rows.Add(dr);
+        dr = studs.Tables["student"].NewRow();
+
+        dr["rollno"] = "3";
+        dr[1] = "Akshita";
+        dr[2] = "IT";
+        dr[3] = "989898";
+        dr[4] = "ak@gmail.com";
+        studs.Tables["student"].Rows.Add(dr);
+
+        GridView1.DataSource = studs.Tables["student"];
+        GridView1.DataBind();
+
+        DropDownList1.DataSource = studs.Tables["student"];
+        DropDownList1.DataTextField = "rollno";
+        DropDownList1.DataTextField = "name";
+        DropDownList1.DataBind();
+    }
+}
+
+1.Multiple inheritance using interfaces
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        Engine1 e1 = new Engine();
+        Response.Write(e1.Pipe());
+        Engine2 e2 = new Engine();
+        Response.Write(e2.Gear());
+    }
+}
+class Engine : Engine1, Engine2
+{
+    public string Pipe()
+    {
+        return "Pipe";
+    }
+    public string Gear()
+    {
+        return "Gear";
+    }
+}
+
+interface Engine1
+{
+    string Pipe();
+}
+interface Engine2
+{
+    string Gear();
+}
+
+2.Create a table with records and retrieve those using Disconnected data access in GridView
+
+//error
+
+1. Create a delegate del1. Create display1() and display2() static methods. create a simple application to call these methods through the delegates.
+
+default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+
+2. Create registration form having textfields given and perform validations for the same
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .style1
+        {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <table style="width:100%;">
+            <tr>
+                <td class="style1">
+                    Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox1" runat="server" Width="202px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                        ControlToValidate="TextBox1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                        ControlToValidate="TextBox1" ErrorMessage="Only Character and not more than 25" 
+                        ForeColor="Red" ValidationExpression="[a-zA-Z]{5,25}"></asp:RegularExpressionValidator>
+                </td>
+                <td class="style1">
+                </td>
+                <td class="style1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox2" runat="server" Width="59px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                        ControlToValidate="TextBox2" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                        ControlToValidate="TextBox2" ErrorMessage="18 - 25" ForeColor="Red" 
+                        MaximumValue="25" MinimumValue="18" Type="Integer"></asp:RangeValidator>
+                </td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox3" runat="server" Width="253px"></asp:TextBox>
+&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                        ControlToValidate="TextBox3" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                        ControlToValidate="TextBox3" ErrorMessage="Invalid email" ForeColor="Red" 
+                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                </td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    Address&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                        ControlToValidate="TextBox4" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    PhoneNo&nbsp;&nbsp;
+                    <asp:TextBox ID="TextBox5" runat="server" Width="140px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                        ControlToValidate="TextBox5" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                        ControlToValidate="TextBox5" ErrorMessage="Invalid phoneNo" ForeColor="Red" 
+                        ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
+                </td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Submit" onclick="Button1_Click" />
+                    <asp:Button ID="Button2" runat="server" Text="Clear" onclick="Button2_Click" />
+                </td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        TextBox1.Text = "";
+        TextBox2.Text = "";
+        TextBox3.Text = "";
+        TextBox4.Text = "";
+        TextBox5.Text = "";
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default2.aspx?na=" + TextBox1.Text + "&ag=" + TextBox2.Text + "&em=" + TextBox3.Text + "&ad=" + TextBox4.Text + "&ph=" + TextBox5.Text);
+    }
+}
+
+default2.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+
+default2.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Default2 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        Response.Write(Request.QueryString["na"]+"<br>");
+        Response.Write(Request.QueryString["ag"] + "<br>");
+        Response.Write(Request.QueryString["em"] + "<br>");
+        Response.Write(Request.QueryString["ad"] + "<br>");
+        Response.Write(Request.QueryString["ph"] + "<br>");
+
+    }
+}
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    delegate string del1();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        del1 d1 = new del1(display1);
+        del1 d2 = new del1(display2);
+        Response.Write(d1());
+        Response.Write(d2());
+    }
+    public static string display1()
+    {
+        return "display1";
+    }
+    public static string display2()
+    {
+        return "display2";
+    }
+
+}
+
+2. Create a webpage to show how to write and read a cookie from a clients computer
+
+default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="write" />
+        <br />
+        <br />
+        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="read" />
+    
+    </div>
+    </form>
+</body>
+</html>
+
+default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        HttpCookie cookie1 = new HttpCookie("user1", TextBox1.Text);
+        Response.Cookies.Add(cookie1);
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        TextBox1.Text=Request.Cookies["user1"].Value;
+    }
+}
+
+

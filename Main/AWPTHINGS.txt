@@ -1,0 +1,109 @@
+things to check : 
+project/website  that are saved in document
+AWPfinal folder also
+
+AdRotater  baaki
+
+
+-> string insertQuery = "insert into Table1 values ('"+ TextBox1.Text +"' , '"+ TextBox1.Text +"')";
+
+notes : 
+
+-> finally ma con.close() nakhavanu 
+-> conStr and all Class level variable banavi devana global so we can use every where
+
+-> user visited count
+   -> ViewState["x"] = Convert.Int32(ViewState["x"]) + 1;  |_ FOR ONE USER
+   -> Label1.Text = ViewState["x"].ToString();			   |
+   
+   -> Application["x"] = Convert.Int32(Application["x"]) + 1;  |_ FOR MORE USER
+   -> Label1.Text = Application["x"].ToString();			   |
+   
+   
+-> Read data from XMl And Desplay in Style
+   -> Photo is there in AWPfinal folder
+   
+-> 	onclick of a button control display the selected items from
+	the listbox in a textbox. Also in the same webpage display
+	the name of the selected item from the DropDownList
+	1 in a
+	label. Also change the font size of the same label according
+	to the font size selected from the Dropdownlist2
+	
+		->to ama harek component ma doublle click karine logic execute karvanu nai ke khali 
+			button na andar j badhu sathe karvanu 
+		-> so for that autopostback jove smajyo harek component ma kaam kariye tyare
+		
+		
+		
+-> calander control ma cs file ma DayRender na fuction lava maate(bcz ema apanne DayRenderEventArgs e nu object malse em) calander na property ma event ma day render che ema doulble 
+click may be
+		-> e.Cell.Controls.Add(lable)
+		
+		
+-> emp data xml bind and ascending show
+	-> photo is there
+
+	
+	
+=> XMl Methods :
+	1. Data Bind with 
+		->	<asp:DataList ID="DataList1" runat="server">
+			<ItemTemplate>	
+			<table class = "table" border="1">
+			<tr>
+			<td>Roll Num : <%# Eval("sid") %><br />
+			Name : <%# Eval("sname") %><br />
+
+			</td>
+			</tr>
+			</table>
+			</ItemTemplate>
+			</asp:DataList>
+	2. Style Xsl Valu 
+		-> photo che 
+		
+	3. Data Bind without Eval 
+		-> photo che
+		
+		
+-> Date and Time 
+	-> must use DateTime dt = new DateTime()
+	-> dt.Date.Second or st.Second if new DataTime.Now hoi to 
+	
+	
+-> DataBinding aave DropDownList ya koi ma to 
+	->use xml methods or (photo che)
+	-> data base like
+		->	SqlDataReader reader = cmd.ExecuteReader(); 
+            DropDownList1.DataSource = reader; 
+            DropDownList1.DataTextField = "Name"; 
+            DropDownList1.DataBind(); 
+
+-> when u go to the event of a radiobutton or doublle click thi pan may be aavi jaay eni method(event)
+	to em be parameter aave ek Object sender , EventArgs e
+		to sender na andar radio butto nu name mali shake aapane backend ma sender object badhu lai ne aavi shake
+			pan ene type cast karvu pase (RadioButton)sender aavi rite
+			
+			
+-> public delegate void del1();
+	del1 d1= new del1(FunctionName);
+	del1 d2= new del1(FunctionName);
+	d1();
+	d2();
+	
+	
+	
+-> <ajaxToolkit:HtmlEditorExtender ID="HtmlEditorExtender1" runat="server" EnableSanitization="False" TargetControlID="TextBox1">  
+
+	EnableSanitization is importanat and also (Scriptmanager First)
+	
+	
+	
+-> <%@ Page Title="" EnableTheming="true" Theme="green" -> in default.aspx - > while creating default.aspx check Add Master file
+	-> when MasterPage Theam folder na under css file and skin 
+	-> chrom dev tool use karo style maate then that style copy it into our css file
+	
+	
+-> whenever working for regular expre or validation then ControlToValid na field in property should not be empty
+	
